@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Pokemon Team Builder Add Team</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        /*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #EE5F5F;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+#teamName{
+  margin-left: 70px;
+}
+
+input[id = "type1"]{
+  width: 195px;
+}
+input[id = "type2"]{
+  width: 195px;
+}
+input[id = "pokemon"]{
+  width: 400px;
+}
+input{
+  width: 400px;
+}
+
+#typeHeader {
+  margin-top: : 30px;
+}
+.button {
+  background-color: #EE5F5F;
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin:10px
+}
+.big-button{
+  width: 100%;
+  height: 70px;
+}
+#id_comment{
+	width: 100%
+}
+
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Pokemon Team Builder Add Team Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	$( document ).ready(function() {
+		$('img[name="p1img"]').attr('src', "/static/images/" + $('.p1wrapper').children().val() + ".png");
+		$('img[name="p2img"]').attr('src', "/static/images/" + $('.p2wrapper').children().val() + ".png");
+		$('img[name="p3img"]').attr('src', "/static/images/" + $('.p3wrapper').children().val() + ".png");
+		$('img[name="p4img"]').attr('src', "/static/images/" + $('.p4wrapper').children().val() + ".png");
+		$('img[name="p5img"]').attr('src', "/static/images/" + $('.p5wrapper').children().val() + ".png");
+		$('img[name="p6img"]').attr('src', "/static/images/" + $('.p6wrapper').children().val() + ".png");
+	});
+	$( function() {
+	var availableTags = [
+"Bulbasaur",
+	  "Ivysaur",
+	  "Venasaur",
+	  "Charmander",
+	  "Charmeleon",
+	  "Charizard",
+	  "Mega Charizard X",
+	  "Mega Charizard Y",
+	  "Squirtle",
+	  "Wartotle",
+	  "Blastoise",
+	  "Mega Blastoise",
+	  "Caterpie",
+	  "Metapod",
+	  "Butterfree",
+	  "Weedle",
+	  "Kakuna",
+	  "Beedrill",
+	  "Mega Beedrill",
+	  "Pidgey",
+	  "Pidgeotto",
+	  "Pidgeot",
+	  "Mega Pidgeot",
+	  "Ratatta",
+	  "Raticate",
+	  "Spearow",
+	  "Fearow",
+	  "Ekans",
+	  "Arbok",
+	  "Pikachu",
+	  "Raichu",
+	  "Sandshrew",
+	  "Sandslash",
+	  "Nidoran (female)",
+	  "Nidorina",
+	  "Nidoqueen",
+	  "Nidoran (male)",
+	  "Nidorino",
+	  "Nidoking",
+	  "Clefairy",
+	  "Clefable",
+	  "Vulpix",
+	  "Ninetales",
+	  "Jigglypuff",
+	  "Wigglytuff",
+	  "Zubat",
+	  "Golbat",
+	  "Oddish",
+	  "Gloom",
+	  "Vileplume",
+	  "Paras",
+	  "Parasect",
+	  "Venonat",
+	  "Venomoth",
+	  "Diglett",
+	  "Dugtrio",
+	  "Meowth",
+	  "Persian",
+	  "Psyduck",
+	  "Golduck",
+	  "Mankey",
+	  "Primeape",
+	  "Growlithe",
+	  "Arcanine",
+	  "Poliwag",
+	  "Poliwhirl",
+	  "Poliwrath",
+	  "Abra",
+	  "Kadabra",
+	  "Alakazam",
+	  "Mega Alakazam",
+	  "Machop",
+	  "Machoke",
+	  "Machamp",
+	  "Bellsprout",
+	  "Weepinbell",
+	  "Victreebel",
+	  "Tentacool",
+	  "Tentacruel",
+	  "Geodude",
+	  "Graveler",
+	  "Golem",
+	  "Ponyta",
+	  "Rapidash",
+	  "Slowpoke",
+	  "Slowbro",
+	  "Mega Slowbro",
+	  "Magnemite",
+	  "Magneton",
+	  "Farfetch'd",
+	  "Doduo",
+	  "Dodrio",
+	  "Seel",
+	  "Dewgong",
+	  "Grimer",
+	  "Muk",
+	  "Shellder",
+	  "Cloyster",
+	  "Gastly",
+	  "Haunter",
+	  "Gengar",
+	  "Mega Gengar",
+	  "Onix",
+	  "Drowzee",
+	  "Hypno",
+	  "Krabby",
+	  "Kingler",
+	  "Voltorb",
+	  "Electrode",
+	  "Exeggcute",
+	  "Exeggutor",
+	  "Cubone",
+	  "Marowak",
+	  "Hitmonlee",
+	  "Hitmonchan",
+	  "Lickitung",
+	  "Koffing",
+	  "Weezing",
+	  "Rhyhorn",
+	  "Rhydon",
+	  "Chansey",
+	  "Tangela",
+	  "Kangaskhan",
+	  "Mega Kangaskhan",
+	  "Horsea",
+	  "Seadra",
+	  "Goldeen",
+	  "Seaking",
+	  "Staryu",
+	  "Starmie",
+	  "Mr. Mime",
+	  "Scyther",
+	  "Jynx",
+	  "Electabuzz",
+	  "Magmar",
+	  "Pinsir",
+	  "Mega Pinsir",
+	  "Tauros",
+	  "Magikarp",
+	  "Gyarados",
+	  "Mega Gyarados",
+	  "Lapras",
+	  "Ditto",
+	  "Eevee",
+	  "Vaporeon",
+	  "Jolteon",
+	  "Flareon",
+	  "Porygon",
+	  "Omanyte",
+	  "Omastar",
+	  "Kabuto",
+	  "Kabutops",
+	  "Aerodactyl",
+	  "Mega Aerodactyl",
+	  "Snorlax",
+	  "Articuno",
+	  "Zapdos",
+	  "Moltres",
+	  "Dratini",
+	  "Dragonair",
+	  "Dragonite",
+	  "Mewtwo",
+	  "Mega Mewtwo X",
+	  "Mega Mewtwo Y",
+	  "Mew",
+	];
+	$('.p1wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	$('.p2wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	$('.p3wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	$('.p4wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	$('.p5wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	$('.p6wrapper').children().autocomplete({
+	  source: availableTags
+	});
+	} );
+	$( function() {
+	var abilityTags = [
+		"Adaptability",
+		"Aerilate",
+		"Aftermath",
+		"Air Lock",
+		"Analytic",
+		"Anger Point",
+		"Anticipation",
+		"Arena Trap",
+		"Aroma Veil",
+		"Aura Break",
+		"Bad Dreams",
+		"Battery",
+		"Battle Armor",
+		"Battle Bond",
+		"Beast Boost",
+		"Berserk",
+		"Big Pecks",
+		"Blaze",
+		"Bulletproof",
+		"Cheek Pouch",
+		"Chlorophyll",
+		"Clear Body",
+		"Cloud Nine",
+		"Color Change",
+		"Comatose",
+		"Competitive",
+		"Compound Eyes",
+		"Contrary",
+		"Corrosion",
+		"Cursed Body",
+		"Cute Charm",
+		"Damp",
+		"Dancer",
+		"Dark Aura",
+		"Dazzling",
+		"Defeatist",
+		"Defiant",
+		"Delta Stream",
+		"Desolate Land",
+		"Disguise",
+		"Download",
+		"Drizzle",
+		"Drought",
+		"Dry Skin",
+		"Early Bird",
+		"Effect Spore",
+		"Electric Surge",
+		"Emergency Exit",
+		"Fairy Aura",
+		"Filter",
+		"Flame Body",
+		"Flare Boost",
+		"Flash Fire",
+		"Flower Gift",
+		"Flower Veil",
+		"Levitate",
+		"Intimidate",
+		"Shed Skin",
+		"Unnerve",
+		"Shadow Tag",
+		"Sand Veil",
+		"Sand Rush",
+		"Lightning Rod",
+		"Tough Claws",
+		"Synchronize",
+		"Immunity",
+		"Thick Fat",
+		"Gluttony",
+		"Run Away",
+		"Inner Focus",
+		"Multiscale",
+		"Steadfast",
+		"Pressure",
+		"Static",
+		"Rock Head",
+	];
+	$( "#id_P1-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	$( "#id_P2-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	$( "#id_P3-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	$( "#id_P4-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	$( "#id_P5-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	$( "#id_P6-pability" ).autocomplete({
+	  source: abilityTags
+	});
+	} );
+	$( function() {
+	var itemTags = [
+		 "Ability Capsule",
+		 "Abomasite",
+		 "Absolite",
+		 "Absorb Bulb",	
+		 "Adamant Orb",
+		 "Aerodactylite",
+		 "Aggronite",
+		 "Aguav Berry",
+		 "Air Balloon",
+		 "Alakazite",
+		 "Ampharosite",
+		 "Amulet Coin",
+		 "Apicot Berry",
+		 "Aspear Berry",
+		 "Babiri Berry",
+		 "Banettite",
+		 "Big Root",
+		 "Binding Band",
+		 "Black Belt",
+		 "Black Sludge",
+		 "BlackGlasses",
+		 "Blastoisinite",
+		 "Blazikenite",
+		 "BrightPowder",
+		 "Bug Gem",	
+		 "Burn Drive",
+		 "Cell Battery",
+		 "Charcoal",
+		 "Charizardite X",
+		 "Charizardite Y",
+		 "Charti Berry",
+		 "Cheri Berry",	
+		 "Chesto Berry",
+		 "Chilan Berry",
+		 "Chill Drive",
+		 "Choice Band",
+		 "Choice Scarf",
+		 "Choice Specs",
+		 "Chople Berry",
+		 "Cleanse Tag",
+		 "Coba Berry",
+		 "Colbur Berry",
+		 "Custap Berry",
+		 "Damp Rock",
+		 "Dark Gem",
+		 "DeepSeaScale",
+		 "DeepSeaTooth",
+		 "Destiny Knot",
+		 "Douse Drive",
+		 "Draco Plate",
+		 "Dragon Fang",
+		 "Dragon Gem",
+		 "Dread Plate",
+		 "Earth Plate",
+		 "Eject Button",
+		 "Electric Gem",
+		 "Enigma Berry",
+		 "Everstone",
+		 "Eviolite",
+		 "Expert Belt",
+		 "Gengarite",
+		 "Life Orb",
+		 "Leftovers",
+		 "Charizardite X",
+		 "Sitrus Berry",
+		 "Mewtwoite X",
+		 "Hidden Power",
+		 "Aerodactylite",
+	];
+	$( "#id_P1-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	$( "#id_P2-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	$( "#id_P3-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	$( "#id_P4-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	$( "#id_P5-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	$( "#id_P6-pitem" ).autocomplete({
+	  source: itemTags
+	});
+	} );
+	$( function() {
+	var moveTags = [
+		"Pound",
+		"Karate Chop",
+		"Double Slap",
+		"Comet Punch",
+		"Mega Punch",
+		"Pay Day",
+		"Fire Punch",
+		"Ice Punch",
+		"Thunder Punch",
+		"Scratch",
+		"Vice Grip",
+		"Guillotine",
+		"Razor Wind",
+		"Swords Dance",
+		"Cut",
+		"Gust",
+		"Wing Attack",
+		"Whirlwind",
+		"Fly",
+		"Bind",
+		"Slam",
+		"Vine Whip",
+		"Stomp",
+		"Double Kick",
+		"Mega Kick",
+		"Jump Kick",
+		"Rolling Kick",
+		"Sand Attack",
+		"Headbutt",
+		"Horn Attack",
+		"Fury Attack",
+		"Horn Drill",
+		"Tackle	Normal",
+		"Body Slam",
+		"Wrap",
+		"Take Down",
+		"Thrash	Normal",
+		"Double-Edge",
+		"Tail Whip",
+		"Poison Sting",
+		"Twineedle",
+		"Pin Missile",
+		"Leer",
+		"Bite",
+		"Growl",
+		"Roar",
+		"Sing",
+		"Supersonic",
+		"Sonic Boom",
+		"Disable",
+		"Acid",
+		"Ember",
+		"Flamethrower",
+		"Mist",
+		"Water Gun",
+		"Hydro Pump",
+		"Surf",
+		"Ice Beam",
+		"Blizzard",
+		"Psybeam",
+		"Bubble Beam",
+		"Aurora Beam",
+		"Hyper Beam",
+		"Peck",
+		"Drill Peck",
+		"Submission",
+		"Low Kick",
+		"Counter",
+		"Seismic Toss",
+		"Strength",
+		"Absorb",
+		"Mega Drain",
+		"Leech Seed",
+		"Growth",
+		"Razor Leaf",
+		"Solar Beam",
+		"Poison Powder",
+		"Stun Spore",
+		"Sleep Powder",
+		"Petal Dance",
+		"String Shot",
+		"Dragon Rage",
+		"Fire Spin",
+		"Thunder Shock",
+		"Thunderbolt",
+		"Thunder Wave",
+		"Thunder",
+		"Rock Throw",
+		"Earthquake",
+		"Fissure",
+		"Dig",
+		"Toxic",
+		"Confusion",
+		"Psychic",
+		"Hypnosis",
+		"Meditate",
+		"Agility",
+		"Quick Attack",
+		"Rage",
+		"Teleport",
+		"Night Shade",
+		"Mimic",
+		"Screech",
+		"Double Team",
+		"Recover",
+		"Harden",
+		"Minimize",
+		"Smokescreen",
+		"Confuse Ray",
+		"Withdraw",
+		"Defense Curl",
+		"Barrier",
+		"Light Screen",
+		"Haze",
+		"Reflect",
+		"Focus Energy",
+		"Bide",
+		"Metronome",
+		"Mirror Move",
+		"Self-Destruct",
+		"Egg Bomb",
+		"Lick",
+		"Smog",
+		"Sludge",
+		"Bone Club",
+		"Fire Blast",
+		"Waterfall",
+		"Clamp",
+		"Swift",
+		"Skull Bash",
+		"Spike Cannon",
+		"Constrict",
+		"Amnesia",
+		"Kinesis",
+		"Soft-Boiled",
+		"High Jump Kick",
+		"Glare",
+		"Dream Eater",
+		"Poison Gas",
+		"Barrage",
+		"Leech Life",
+		"Lovely Kiss",
+		"Sky Attack",
+		"Transform",
+		"Bubble",
+		"Dizzy Punch",
+		"Spore",
+		"Flash",
+		"Psywave",
+		"Splash",
+		"Acid Armor",
+		"Crabhammer",
+		"Explosion",
+		"Fury Swipes",
+		"Bonemerang",
+		"Rest",
+		"Rock Slide",
+		"Hyper Fang",
+		"Sharpen",
+		"Conversion",
+		"Tri Attack",
+		"Super Fang",
+		"Slash",
+		"Substitute",
+		"Struggle",
+		"Aerial Ace",
+		"Shadow Ball",
+		"Volt Switch",
+		"Charge Beam",
+		"Sludge Bomb",
+		"Icy Wind",
+		"Focus Blast",
+		"Hypnosis",
+		"Nightmare",
+		"Dragon Claw",
+		"Flare Blitz",
+		"Shadow Claw",
+		"Aura Sphere",
+		"Baton Pass",
+		"Heavy Slam",
+		"High Horsepower",
+		"Charm",
+		"Last Resort",
+		"Work Up",
+		"Outrage",
+		"Aqua Tail",
+		"Psycho Cut",
+		"Brutal Swing",
+		"Brick Break",
+		"Zap Cannon",
+		"Hidden Power",
+		"Sky Drop",
+		"Thunder Fang",
+	];
+	$( "#id_P1-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P1-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P1-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P1-moved" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P2-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P2-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P2-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P2-moved" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P3-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P3-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P3-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P3-moved" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P4-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P4-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P4-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P4-moved" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P5-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P5-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P5-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P5-moved" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P6-movea" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P6-moveb" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P6-movec" ).autocomplete({
+	  source: moveTags
+	});
+	$( "#id_P6-moved" ).autocomplete({
+	  source: moveTags
+	});
+	} );
+	$(function () {  
+    $('.p1wrapper').children().change(function() {
+		  
+        $('img[name="p1img"]').attr('src', "/static/images/" + $('.p1wrapper').children().val() + ".png");
+    });
+});
+	$(function () {  
+    $('.p2wrapper').children().change(function() {
+		  
+        $('img[name="p2img"]').attr('src', "/static/images/" + $('.p2wrapper').children().val() + ".png");
+    });
+});
+	$(function () {  
+    $('.p3wrapper').children().change(function() {
+		  
+        $('img[name="p3img"]').attr('src', "/static/images/" + $('.p3wrapper').children().val() + ".png");
+    });
+});
+	$(function () {  
+    $('.p4wrapper').children().change(function() {
+		  
+        $('img[name="p4img"]').attr('src', "/static/images/" + $('.p4wrapper').children().val() + ".png");
+    });
+});
+	$(function () {  
+    $('.p5wrapper').children().change(function() {
+		  
+        $('img[name="p5img"]').attr('src', "/static/images/" + $('.p5wrapper').children().val() + ".png");
+    });
+});
+	$(function () {  
+    $('.p6wrapper').children().change(function() {
+		  
+        $('img[name="p6img"]').attr('src', "/static/images/" + $('.p6wrapper').children().val() + ".png");
+    });
+});
+	</script>
+	
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pokemon Team Builder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/teambuilder/dashboard">Home</a></li>
+            <li><a href='/teambuilder/community'>Community</a></li>
+            <li><a href="/teambuilder/profile">Profile</a></li>
+            <li><a href="/teambuilder/logout">Logout</a></li>
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li ><a href="/teambuilder/dashboard">Home </a></li>
+            <li class="active"><a href="/teambuilder/addteam">Add Team<span class="sr-only">(current)</span></a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="/teambuilder/pokemon">Pokemon List</a></li>
+            <li><a href="/teambuilder/moves">Pokemon Move List</a></li>
+            <li><a href="/teambuilder/item">Pokemon Item List</a></li>
+            <li><a href="/teambuilder/typechart">Pokemon Type Chart</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="/teambuilder/community">Community</a></li>
+            <li><a href="/teambuilder/profile">Profile</a></li>
+            <li><a href="/teambuilder/logout">Logout</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Team Creator</h1>
+		
+		<!-- Beginning of Form -->
+		<form action="" method="post">
+		  {% csrf_token %}
+          <div class="row placeholders"></div>
+          <h2 class="sub-header">
+		  <label for="{{ team.teamname.id_for_label }}">Team Name:</label>
+		  </h2>
+		
+          <!--<input type = "text"
+                 id = "teamName"
+                 value = "" />
+                 </h2>-->
+		  {{ team.teamname }}
+
+          <h2 class="sub-header">Pokemon Team Member 1</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p1.pname.id_for_label }}">Pokemon 1</label></h4>
+                    <div class="p1wrapper">
+					{{ p1.pname }}
+					</div>
+					
+                    <!--<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p1.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p1.pability }}
+
+                    <h4><label for="{{ p1.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p1.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p1img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p1.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p1.movea }}
+					
+					<h4><label for="{{ p1.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p1.moveb }}
+					
+					<h4><label for="{{ p1.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p1.movec }}
+					
+					<h4><label for="{{ p1.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p1.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header">Pokemon Team Member 2</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p2.pname.id_for_label }}">Pokemon 2</label></h4>
+					<div class="p2wrapper">
+					{{ p2.pname }}
+					</div>
+					
+                    <!---<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p2.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p2.pability }}
+
+                    <h4><label for="{{ p2.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p2.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p2img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p2.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p2.movea }}
+					
+					<h4><label for="{{ p2.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p2.moveb }}
+					
+					<h4><label for="{{ p2.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p2.movec }}
+					
+					<h4><label for="{{ p2.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p2.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header">Pokemon Team Member 3</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p3.pname.id_for_label }}">Pokemon 3</label></h4>
+                    <div class="p3wrapper">
+					{{ p3.pname }}
+					</div>
+
+                    <!---<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p3.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p3.pability }}
+
+                    <h4><label for="{{ p3.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p3.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p3img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p3.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p3.movea }}
+					
+					<h4><label for="{{ p3.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p3.moveb }}
+					
+					<h4><label for="{{ p3.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p3.movec }}
+					
+					<h4><label for="{{ p3.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p3.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header">Pokemon Team Member 4</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p4.pname.id_for_label }}">Pokemon 4</label></h4>
+                    <div class="p4wrapper">
+					{{ p4.pname }}
+					</div>
+
+                    <!---<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p4.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p4.pability }}
+
+                    <h4><label for="{{ p4.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p4.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p4img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p4.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p4.movea }}
+					
+					<h4><label for="{{ p4.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p4.moveb }}
+					
+					<h4><label for="{{ p4.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p4.movec }}
+					
+					<h4><label for="{{ p4.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p4.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header">Pokemon Team Member 5</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p5.pname.id_for_label }}">Pokemon 5</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					<div class="p5wrapper">
+					{{ p5.pname }}
+					</div>
+
+                    <!--<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p5.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p5.pability }}
+
+                    <h4><label for="{{ p5.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p5.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p5img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p5.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p5.movea }}
+					
+					<h4><label for="{{ p5.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p5.moveb }}
+					
+					<h4><label for="{{ p5.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p5.movec }}
+					
+					<h4><label for="{{ p5.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p5.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <h2 class="sub-header">Pokemon Team Member 6</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                  <th align="center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <h4><label for="{{ p6.pname.id_for_label }}">Pokemon 6</label></h4>
+					<div class="p6wrapper">
+					{{ p6.pname }}
+					</div>
+
+                    <!---<h4> </h4>
+                    <h4 id="typeHeader">Types:</h4>
+
+                    <h2>
+                    <input type="text" id="type1" value="" readonly>
+                    <input type="text" id="type2" value="" readonly>
+                    </h2>-->
+
+                    <h4><label for="{{ p6.pability.id_for_label }}">Ability</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p6.pability }}
+
+                    <h4><label for="{{ p6.pitem.id_for_label }}">Item</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p6.pitem }}
+
+                  </td>
+                  <td>
+                    <img name="p6img" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="300" height="300" class="img-responsive" alt="Generic placeholder thumbnail">
+                      
+
+                  </td>
+                  <td>
+                    <h4><label for="{{ p6.movea.id_for_label }}">Move 1</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p6.movea }}
+					
+					<h4><label for="{{ p6.moveb.id_for_label }}">Move 2</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p6.moveb }}
+					
+					<h4><label for="{{ p6.movec.id_for_label }}">Move 3</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+                    {{ p6.movec }}
+					
+					<h4><label for="{{ p6.moved.id_for_label }}">Move 4</label></h4>
+                    <!--<input type="text" id="pokemon" class="form-control" placeholder="Search...">-->
+					{{ p6.moved }}
+					
+                  </td>
+
+
+                  
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+
+		  {{team.comment}}
+		  
+          <input type="submit" class="button big-button" align="center" value="Submit" style="font-size:30px;font-weight:bold">
+		  </form>
+		<!-- End of Form -->
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
+
+<script type="text/javascript">
+<!-- Bootstrap core JavaScript
+    ==================================================
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</script>
+</body>
+</html>
