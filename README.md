@@ -21,5 +21,7 @@ View the Cloud-Dex web app at: http://pokemonteambuilder-163623.appspot.com/team
 # Authors
 
 Taylor Somann
+
 Adam Beckett May
+
 Robert Matteau
