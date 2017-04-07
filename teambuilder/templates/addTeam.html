@@ -192,6 +192,7 @@ input{
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
+	// Data Target for pokemon search bar
 	$( function() {
 	var availableTags = [
 	  "Bulbasaur",
@@ -360,6 +361,7 @@ input{
 	  "Mega Mewtwo Y",
 	  "Mew",
 	];
+	// Add autocomplete to pokemon search bars
 	$('.p1wrapper').children().autocomplete({
 	  source: availableTags
 	});
@@ -379,6 +381,7 @@ input{
 	  source: availableTags
 	});
 	} );
+	// Data target for ability search bar
 	$( function() {
 	var abilityTags = [
 		"Adaptability",
@@ -457,6 +460,7 @@ input{
 		"Static",
 		"Rock Head",
 	];
+	// Add autocomplete to ability search bars
 	$( "#id_P1-pability" ).autocomplete({
 	  source: abilityTags
 	});
@@ -476,6 +480,7 @@ input{
 	  source: abilityTags
 	});
 	} );
+	// Data target for item search bar
 	$( function() {
 	var itemTags = [
 		 "Ability Capsule",
@@ -547,6 +552,7 @@ input{
 		 "Hidden Power",
 		 "Aerodactylite",
 	];
+	// Add autocomplete to item search bars
 	$( "#id_P1-pitem" ).autocomplete({
 	  source: itemTags
 	});
@@ -566,6 +572,7 @@ input{
 	  source: itemTags
 	});
 	} );
+	// Data target for move search bar
 	$( function() {
 	var moveTags = [
 		"Pound",
@@ -762,6 +769,7 @@ input{
 		"Sky Drop",
 		"Thunder Fang",
 	];
+	// Add autocomplete to move search bars
 	$( "#id_P1-movea" ).autocomplete({
 	  source: moveTags
 	});
@@ -835,6 +843,7 @@ input{
 	  source: moveTags
 	});
 	} );
+	// Change SRC value change of pokemon search bar value
 	$(function () {  
     $('.p1wrapper').children().change(function() {
 		  
