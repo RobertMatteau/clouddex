@@ -18,6 +18,10 @@ To test Cloud-Dex locally, download and configure the Bitnami Django Stack:
 # On the cloud
 View the Cloud-Dex web app at: http://pokemonteambuilder-163623.appspot.com/teambuilder/
 
+
+# The only working version of our application is an old version.
+# If you want to see all of the system's functionality I recommend testing it locally.
+
 # Authors
 
 Taylor Somann
